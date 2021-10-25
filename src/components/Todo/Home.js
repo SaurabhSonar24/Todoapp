@@ -1,5 +1,4 @@
-//import logo from './logo.svg';
-// {id:1, title:"GOOD MORNING", priority: "1"}, {id:2,  title:"Hii", priority: "2"}
+
 import {v1 as uuid} from "uuid";
 import React, {Component} from 'react';
 import ToDo from './ToDo';
@@ -26,9 +25,7 @@ class Home extends Component {
   };
   handleChange = (e) =>{
     const { name, value } = e.target
-    // const val=e.target.value
-    // console.log(e.target)
-    // console.log(val)
+ 
     let err=this.state.err;
     switch(name){
       case 'item':
@@ -47,9 +44,7 @@ class Home extends Component {
 }
   handleChange1 = (e) =>{ 
     const { name, value } = e.target
-    // const val=e.target.value
-    // console.log(e.target)
-    // console.log(val)
+   
     let err=this.state.err;
     switch(name){
       case 'desc':
@@ -66,7 +61,7 @@ class Home extends Component {
     {
         if(this.state.item!=="" && this.state.desc!=="") {
           alert("Task Updated Successfully !!")
-          //  this.add()
+        
           const newItem = {
             id: this.state.id,
             title: this.state.item,
@@ -78,25 +73,18 @@ class Home extends Component {
             items: updatedItems,
             item: "",
             desc: "",
-            done:false,
+            
             id: uuid(),
             editItem: false
           },()=>console.log(this.state))
         }
         else{
             alert("Failed to Register")
-        }
-        
-       
+        }      
     }
     else {
         alert("Please Enter Valid Details");
     }
-
-
-   
-
-    
   }
   
     handleDelete = (id) =>{
@@ -106,40 +94,13 @@ class Home extends Component {
       items: filteredItems
     })
   }
-  handleEdit = (id) =>{
-    // const filteredItems = this.state.items.filter(item=>item.id !== id)
-    // const selectedItem = this.state.items.find(item=>item.id === id)
-    // console.log(selectedItem)
-    // this.setState({
-    //   items: filteredItems,
-    //   item: selectedItem.title,
-    //   desc: selectedItem.priority,
-    //   id: id,
-    //   editItem: true
-    // })
-    const filteredItems = this.state.items.filter(item=>item.id !== id)
-    let Done=this.state.done;
-//     const newTodoList= this.state.items.map(item=>{
-//       if(item.id===id){
-//         return(...item,done:true)
-        
-//  }
-const selectedItem = this.state.items.find(item=>item.id === id)
-this.setState({
-    //items: filteredItems,
-    // done: true,
-    item: selectedItem.title.concat({value:this.state.item,TextDecor:"line"}),
-    id: id,
-    editItem: true
-  })
- 
-    
-    console.log(Done)
-    console.log(id)
-    // this.setState({
-    //   items: filteredItems
-    // })
-  }
+   
+ handleEdit=(id)=>{
+  let todoData = JSON.parse(localStorage.getItem('mylogin'))
+  todoData[id].status="true"
+  localStorage.setItem('mylogin',JSON.stringify(todoData))
+  window.location.replace('/Todo')
+ }
   render() {
   return (
     <div className="container "  style={{backgroundColor:"#EFE3E1",height:"800px"}}>
@@ -148,8 +109,8 @@ this.setState({
          
           <h3 className="text-center text-uppercase" style={{fontSize:"15mm"}}>Todo List</h3>
           <h5 className=" text-uppercase text-center" style={{paddingTop:"30px"}}>Add To Do</h5>
-          <ToDo item={this.state.item} desc={this.state.desc} srNo={this.state.srNo} handleChange1={this.handleChange1} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editItem={this.state.editItem} err={this.state.err}/>
-          <List items={this.state.items} handleDelete={this.handleDelete} handleEdit={this.handleEdit} Done={this.state.done}/>
+          <ToDo item={this.state.item} desc={this.state.desc} srNo={this.state.srNo} handleChange1={this.handleChange1} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editItem={this.state.editItem} err={this.state.err} handleEdit={this.handleEdit} />
+          <List items={this.state.items} handleDelete={this.handleDelete} />
           
         </div>
       </div>

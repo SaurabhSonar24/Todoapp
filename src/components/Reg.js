@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+
 import axios from 'axios'
 import { Link,Redirect,useHistory } from 'react-router-dom';
 
@@ -37,7 +37,7 @@ export class Reg extends Component {
     
     handle = (event) => {
         const { name, value } = event.target
-    //    this.setState({ [name]: value })
+ 
         let errors=this.state.errors;
         let err=this.state.err;
         switch(name){
@@ -102,7 +102,7 @@ export class Reg extends Component {
          return valid;
      }
     add = (event) => {
-        // event.preventDefault()
+        
      
         const URL = "http://localhost:3003/cred"
         axios.post(URL, {
@@ -152,7 +152,7 @@ export class Reg extends Component {
                         <input type="submit" value="Add" className="btn btn-success " style={{marginLeft:"525px"}} />
                         <br/><br/><br/>
                         <p className="text-center">If Registered, Go to <Link to="/">Login Page</Link></p>
-                        {/* <button className="btn"><Link to="/Todo">Go To Login Page</Link> </button> */}
+                        
                     </form>
                 </div>
             </div>
