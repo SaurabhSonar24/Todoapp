@@ -1,0 +1,44 @@
+{
+  "cred": [
+    {
+      "id": 1,
+      "fname": "A",
+      "lname": "B",
+      "username": "abc@12",
+      "email": "abc@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": 2,
+      "fname": "B",
+      "lname": "D",
+      "username": "bde@34",
+      "email": "male",
+      "password": "bde345"
+    },
+    {
+      "fname": "as",
+      "lname": "as",
+      "username": "as",
+      "email": "abc@softmail.com",
+      "password": "123sw",
+      "id": 3
+    },
+    {
+      "fname": "as",
+      "lname": "as",
+      "username": "as",
+      "email": "abc@softmail.com",
+      "password": "123",
+      "id": 4
+    },
+    {
+      "fname": "as",
+      "lname": "as",
+      "username": "sd",
+      "email": "saurabh.sonar@neosoftmail.com",
+      "password": "as",
+      "id": 5
+    }
+  ]
+}
